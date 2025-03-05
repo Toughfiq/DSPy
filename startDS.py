@@ -15,6 +15,8 @@ try:
 
     # Menampilkan 5 baris pertama
     print(table.head())
+    #menampilkan summary daru data seperti di Bahasa R
+    print(table.describe())
 
 except FileNotFoundError:
     print("Error: File tidak ditemukan. Pastikan path benar.")
