@@ -15,8 +15,16 @@ try:
 
     # Menampilkan 5 baris pertama
     print(table.head())
-    #menampilkan summary daru data seperti di Bahasa R
-    print(table.describe())
+    # Menampilkan jumlah data kosong
+    print(table.isna().sum())
+    '''
+    menampilkan summary daru data seperti di Bahasa R menggunakan print(dataSetName.describe())
+    sementara yang dibawah ini digunakan untuk menapilkan ringkasan semua tipe data
+    '''
+    print(table.describe(include="all"))
+    # Menampilkan informasi dataset, termasuk tipe data, ukuran, dan jumlah data kosong
+    print(table.info())
+    
 
 except FileNotFoundError:
     print("Error: File tidak ditemukan. Pastikan path benar.")
