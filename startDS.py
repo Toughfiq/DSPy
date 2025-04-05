@@ -18,7 +18,7 @@ try:
     # Menampilkan jumlah data kosong
     print(table.isna().sum())
     '''
-    menampilkan summary daru data seperti di Bahasa R menggunakan print(dataSetName.describe())
+    menampilkan summary dari data seperti di Bahasa R menggunakan print(dataSetName.describe())
     sementara yang dibawah ini digunakan untuk menapilkan ringkasan semua tipe data
     '''
     print(table.describe(include="all"))
