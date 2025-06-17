@@ -4,5 +4,7 @@ import seaborn as sns
 
 # 1. Load data
 df = pd.read_csv('DatingBehave.csv')
+# Mendeskripsikan data numerikal
 print(df.describe(include = 'number'))
 print(df.info())
+# 
