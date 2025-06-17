@@ -4,6 +4,5 @@ import seaborn as sns
 
 df = pd.read_csv('DatingBehave.csv')
 print(df.describe(include= 'all'))
-#saat di describe banyak terjadi NaN, analisis gua sementara karena file bersifat object sehingga mean
-#nya menjadi tidak bisa ditemui berdasar cara menghitung jumlah keseluruhan dibagi banyaknya data
+#saat di describe banyak terjadi NaN,Karena NaN berarti not a number dan sesuai dengan type file saat ini
 print(df.info())
