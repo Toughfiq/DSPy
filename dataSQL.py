@@ -1,6 +1,6 @@
 import csv
 import mysql.connector
-
+#file ini akan menginput file csv ke MySQL
 # Konfigurasi database
 db_config = {
     'host': 'localhost',
