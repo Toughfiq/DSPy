@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+#File ini akan menjadi contoh jika mengolah data menggunakan load csv
 # 1. Load data
 Gender = pd.read_csv('DatingBehave.csv', usecols=['gender'])
 
