@@ -6,6 +6,7 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from utils.db_connection import load_column, load_columns
+from utils.cleaning import *
 #Ambil config Databases dulu
 db_config = {
     'host': 'localhost',
@@ -14,4 +15,4 @@ db_config = {
     'database': 'DatingSQL'
 }
 eda_corr_df = load_columns(['gender', 'sexual_orientation']) #gunakan list untuk load beberapa collumns
-print(eda_corr_df['sexual_orientation'].unique)
+eda_corr_df['sexual_orientation'] = eda_corr_df['sexual_orientation'].apply(clean_orientation)
