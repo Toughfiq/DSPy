@@ -63,3 +63,32 @@ plt.ylabel('Count', fontsize=12)#judul sumbu y
 plt.xticks(rotation=45) #memiringkan label sumbu x aagr terbaca dan tidak bertumpuk
 plt.tight_layout() # digunakan untuk menyesuaikan padding agar tidak terpotong
 plt.show() #menampilkan hasil plot
+
+#membuat perbandingan gender binary(male and female) dan juga  non-binary
+def group_gender(value):
+    if value in ['Male', 'Female']:
+        return 'Binary'
+    elif value in ['Non-binary', 'Genderfluid']:
+        return 'Non-Binary/Fluid'
+    else:
+        return 'Other/Unspecified'
+gender_df['gender_group'] = gender_df['gender'].apply(group_gender)
+
+#Hitung frekuensi tiap kelompok
+group_counts = gender_df['gender_group'].value_counts()
+group_percent = gender_df['gender_group'].value_counts(normalize=True) * 100
+
+#Buat pie chart untuk visualisasi perbandingan
+plt.figure(figsize=(8, 8))
+colors = ['#8ecae6', '#ffb703', '#adb5bd']  # Warna bisa kamu ganti sesuai selera
+
+plt.pie(group_counts, 
+        labels=group_counts.index, 
+        autopct='%1.1f%%', 
+        startangle=140, 
+        colors=colors,
+        wedgeprops={'edgecolor': 'white'})
+
+plt.title('Gender Group Distribution', fontsize=14)
+plt.axis('equal')  # memastikan lingkaran utuh
+plt.show()
