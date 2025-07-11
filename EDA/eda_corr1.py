@@ -13,4 +13,5 @@ db_config = {
     'password': 'Databases123',
     'database': 'DatingSQL'
 }
-eda_corr_df = load_columns(['gender', 'sexual_orientation'])
+eda_corr_df = load_columns(['gender', 'sexual_orientation']) #gunakan list untuk load beberapa collumns
+print(eda_corr_df['sexual_orientation'].unique)
