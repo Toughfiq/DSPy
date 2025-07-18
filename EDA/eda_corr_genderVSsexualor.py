@@ -55,9 +55,10 @@ plt.show()
 # Chi-square test
 chi2, p, dof, expected = chi2_contingency(cross_tab)
 print(f"Chi-square: {chi2:.2f}, p-value: {p:.4f}")
-
-#"Berdasarkan uji chi-square antara gender (baik dalam bentuk asli maupun setelah dikelompokkan) 
-# dan sexual orientation, diperoleh p-value yang jauh di atas 0.05. Hal ini menunjukkan 
-# tidak terdapat hubungan statistik yang signifikan antara gender dan orientasi seksual 
-# dalam dataset ini.Hal ini juga dapat menunjukkan bahwa 
-# orientasi seksual dalam data ini terdistribusi cukup merata lintas kelompok gender."
+'''
+Berdasarkan uji chi-square antara gender (baik dalam bentuk asli maupun setelah dikelompokkan) 
+dan sexual orientation, diperoleh p-value yang jauh di atas 0.05. Hal ini menunjukkan 
+tidak terdapat hubungan statistik yang signifikan antara gender dan orientasi seksual 
+dalam dataset ini.Hal ini juga dapat menunjukkan bahwa 
+orientasi seksual dalam data ini terdistribusi cukup merata lintas kelompok gender."
+'''
