@@ -35,3 +35,29 @@ print(f"Chi-square statistic: {chi2}")
 print(f"P-value: {p}") 
 #hasil value chi square nya adalah 0.7 -> ini berarti tidak ada hubungan signifikan 
 # antara gender dan sexual orientation nya atau dengan kata lain independen satu sama lain.
+######### Coba kelompokkan gender untuk melihat apakah ada perilaku dari berbagai kelompok #########
+def group_gender(value):
+    if value in ['Male', 'Female']:
+        return 'Binary'
+    elif value in ['Non-binary', 'Genderfluid']:
+        return 'Non-Binary/Fluid'
+    else:
+        return 'Other/Unspecified'
+eda_corr_df['gender_group'] = eda_corr_df['gender'].apply(group_gender)
+#Buat cross tab untuk korelasi baru
+cross_tab = pd.crosstab(eda_corr_df['gender_group'], eda_corr_df['sexual_orientation'])
+
+# Visualisasi
+sns.heatmap(cross_tab, annot=True, fmt='d', cmap='BuPu')
+plt.title("Grouped Gender vs Sexual Orientation")
+plt.show()
+
+# Chi-square test
+chi2, p, dof, expected = chi2_contingency(cross_tab)
+print(f"Chi-square: {chi2:.2f}, p-value: {p:.4f}")
+
+#"Berdasarkan uji chi-square antara gender (baik dalam bentuk asli maupun setelah dikelompokkan) 
+# dan sexual orientation, diperoleh p-value yang jauh di atas 0.05. Hal ini menunjukkan 
+# tidak terdapat hubungan statistik yang signifikan antara gender dan orientasi seksual 
+# dalam dataset ini.Hal ini juga dapat menunjukkan bahwa 
+# orientasi seksual dalam data ini terdistribusi cukup merata lintas kelompok gender."
