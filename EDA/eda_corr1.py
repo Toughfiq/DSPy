@@ -7,6 +7,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from utils.db_connection import load_column, load_columns
 from utils.cleaning import *
+from scipy.stats import chi2_contingency
 #Ambil config Databases dulu
 db_config = {
     'host': 'localhost',
@@ -27,3 +28,10 @@ plt.ylabel("Gender")
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
+# Lakukan uji chi-square
+chi2, p, dof, expected = chi2_contingency(cross_tab)
+
+print(f"Chi-square statistic: {chi2}")
+print(f"P-value: {p}") 
+#hasil value chi square nya adalah 0.7 -> ini berarti tidak ada hubungan signifikan 
+# antara gender dan sexual orientation nya atau dengan kata lain independen satu sama lain.
