@@ -44,22 +44,3 @@ def clean_gender (value):
         return 'Prefer Not to Say'
     else:
         return value.title()  # Kapitalisasi respon lain  
-# ========================================
-# Cleaning Swipe right
-# ========================================  
-def clean_swipe (value):
-    if pd.isna(value): #Fungsi pd.isna() mengecek satu nilai (value) apakah NaN atau tidak.
-        return 'Unknown'
-    value = str(value).strip()  # Mengganti spasi atau white space menjadi type string agar terbaca
-    if value.lower() == 'female':
-        return 'Female'
-    elif value.lower() == 'male':
-        return 'Male'
-    elif value.lower() == 'genderfluid':
-        return 'Genderfluid'
-    elif value.lower() in ['non-binary', 'nonbinary']: #mencegah adanya kesalah menulis
-        return 'Non-binary'
-    elif value.lower() in ['prefer not to say', 'prefer not to answer']:
-        return 'Prefer Not to Say'
-    else:
-        return value.title()  # Kapitalisasi respon lain  
