@@ -33,8 +33,13 @@ chi2, p, dof, expected = chi2_contingency(cross_tab)
 
 print(f"Chi-square statistic: {chi2}")
 print(f"P-value: {p}") 
-#hasil value chi square nya adalah 0.7 -> ini berarti tidak ada hubungan signifikan 
-# antara gender dan sexual orientation nya atau dengan kata lain independen satu sama lain.
+'''
+Hasil value chi square nya adalah 0.7 -> ini berarti 
+tidak ada hubungan signifikan 
+antara gender dan sexual orientation nya atau 
+dengan kata lain independen satu sama lain.
+'''
+
 ######### Coba kelompokkan gender untuk melihat apakah ada perilaku dari berbagai kelompok #########
 def group_gender(value):
     if value in ['Male', 'Female']:
