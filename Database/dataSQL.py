@@ -8,7 +8,6 @@ db_config = {
     'password': 'Databases123',
     'database': 'DatingSQL'
 }
-
 csv_file_path = 'DatingBehave.csv'
 table_name = 'user_data'# nama tabel SQL
 batch_size = 5000 # Jumlah baris yang akan dimasukkan dalam satu transaksi
