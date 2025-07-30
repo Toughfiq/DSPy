@@ -17,7 +17,7 @@ db_config = {
 }
 
 #=================================Analisis 1 gender vs Swipe Right=============
-eda_gender_behavior = load_columns(['gender', 'swipe_right_ratio','likes_recieved']) #gunakan list untuk load beberapa collumns
+eda_gender_behavior = load_columns(['gender', 'swipe_right_ratio','likes_received']) #gunakan list untuk load beberapa collumns
 # ==== Bersihkan Data ====
 # Pastikan tidak ada nilai kosong
 eda_clean_gvsr = eda_gender_behavior.dropna(subset=['gender', 'swipe_right_ratio'])
@@ -57,13 +57,13 @@ plt.show()
 #-=============================Analisis Gender vs Likes recieved =========================
 # ==== Bersihkan Data ====
 # Pastikan tidak ada nilai kosong
-eda_clean_gvlr = eda_gender_behavior.dropna(subset=['gender', 'likes_recieved'])
+eda_clean_gvlr = eda_gender_behavior.dropna(subset=['gender', 'likes_received'])
 
 # Pastikan kolom numerik dalam format float
-eda_clean_gvlr['likes_recieved'] = pd.to_numeric(eda_clean_gvlr['likes_recieved'], errors='coerce')
-eda_clean_gvlr = eda_clean_gvlr.dropna(subset=['likes_recieved'])
+eda_clean_gvlr['likes_received'] = pd.to_numeric(eda_clean_gvlr['likes_received'], errors='coerce')
+eda_clean_gvlr = eda_clean_gvlr.dropna(subset=['likes_received'])
 
 # ==== Tampilkan Rata-rata per Gender ====
 print("\n=== Rata-rata likes recieve per Gender ===")
-mean_likes = eda_clean_gvlr.groupby('gender')['likes_recieve'].mean().sort_values(ascending=False)
-print(mean_mean_likes)
+mean_likes = eda_clean_gvlr.groupby('gender')['likes_received'].mean().sort_values(ascending=False)
+print(mean_likes)
