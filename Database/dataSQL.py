@@ -1,5 +1,6 @@
 import csv
 import mysql.connector
+import os
 #file ini akan menginput file csv ke MySQL
 # Konfigurasi database
 db_config = {
@@ -8,7 +9,8 @@ db_config = {
     'password': 'Databases123',
     'database': 'DatingSQL'
 }
-csv_file_path = 'DatingBehave.csv'
+base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+csv_file_path = os.path.join(base_dir, 'Data', 'DatingBehave.csv')
 table_name = 'user_data'# nama tabel SQL
 batch_size = 5000 # Jumlah baris yang akan dimasukkan dalam satu transaksi
 
