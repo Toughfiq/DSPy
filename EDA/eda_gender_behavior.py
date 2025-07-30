@@ -82,3 +82,8 @@ for gender in genders:
     plt.grid(True)
     plt.tight_layout()
     plt.show()
+'''
+hasil yang dihasilkan oleh histogram menunjukkan beberapa multimodal dalam distribusinya walau
+tidak terlalu signifikan, kedepannya mungkin bisa dilihat korelasinya dengan app usage minutes
+apakah terjadi korelasi diantara itu.
+'''
