@@ -67,3 +67,18 @@ eda_clean_gvlr = eda_clean_gvlr.dropna(subset=['likes_received'])
 print("\n=== Rata-rata likes recieve per Gender ===")
 mean_likes = eda_clean_gvlr.groupby('gender')['likes_received'].mean().sort_values(ascending=False)
 print(mean_likes)
+
+#================= Test histogram setiap gender vs likes recieved nya===============
+genders = eda_clean_gvlr['gender'].unique()
+
+for gender in genders:
+    subset = eda_clean_gvlr[eda_clean_gvlr['gender'] == gender]
+    
+    plt.figure(figsize=(6, 4))
+    plt.hist(subset['likes_received'], bins=30, color='skyblue', edgecolor='black')
+    plt.title(f'Distribusi Likes Received untuk Gender: {gender}')
+    plt.xlabel('Likes Received')
+    plt.ylabel('Frekuensi')
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
