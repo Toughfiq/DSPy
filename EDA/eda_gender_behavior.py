@@ -17,7 +17,7 @@ db_config = {
 }
 
 #=================================Analisis 1 gender vs Swipe Right=============
-eda_gender_behavior = load_columns(['gender', 'swipe_right_ratio','likes_received']) #gunakan list untuk load beberapa collumns
+eda_gender_behavior = load_columns(['gender', 'swipe_right_ratio','likes_received','app_usage_time_min']) #gunakan list untuk load beberapa collumns
 # ==== Bersihkan Data ====
 # Pastikan tidak ada nilai kosong
 eda_clean_gvsr = eda_gender_behavior.dropna(subset=['gender', 'swipe_right_ratio'])
@@ -87,3 +87,74 @@ hasil yang dihasilkan oleh histogram menunjukkan beberapa multimodal dalam distr
 tidak terlalu signifikan, kedepannya mungkin bisa dilihat korelasinya dengan app usage minutes
 apakah terjadi korelasi diantara itu.
 '''
+# ====== Scatter plot multivariat dengan waktu numerik ======
+eda_clean_multi = eda_gender_behavior.dropna(
+    subset=['gender', 'likes_received', 'app_usage_time_min']
+).copy()
+
+# Konversi likes_received dan waktu ke numeric
+eda_clean_multi['likes_received'] = pd.to_numeric(
+    eda_clean_multi['likes_received'], errors='coerce'
+)
+eda_clean_multi['app_usage_time_min'] = pd.to_numeric(
+    eda_clean_multi['app_usage_time_min'], errors='coerce'
+)
+
+# Drop NaN sisa
+eda_clean_multi = eda_clean_multi.dropna(subset=['likes_received', 'app_usage_time_min'])
+
+# Scatter plot per gender
+genders = eda_clean_multi['gender'].unique()
+
+for gender in genders:
+    subset = eda_clean_multi[eda_clean_multi['gender'] == gender]
+    
+    plt.figure(figsize=(6, 4))
+    sns.scatterplot(
+        data=subset,
+        x='app_usage_time_min',
+        y='likes_received',
+        color='skyblue',
+        alpha=0.5
+    )
+    plt.title(f'Likes Received vs App Usage Time (menit) - {gender}')
+    plt.xlabel('App Usage Time (menit)')
+    plt.ylabel('Likes Received')
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+
+#================= trend line =============
+# Scatter plot + Trend line per gender
+genders = eda_clean_multi['gender'].unique()
+
+for gender in genders:
+    subset = eda_clean_multi[eda_clean_multi['gender'] == gender]
+    
+    plt.figure(figsize=(6, 4))
+    
+    # Scatter plot
+    sns.scatterplot(
+        data=subset,
+        x='app_usage_time_min',
+        y='likes_received',
+        color='skyblue',
+        alpha=0.5
+    )
+    
+    # Trend line (regresi linear)
+    sns.regplot(
+        data=subset,
+        x='app_usage_time_min',
+        y='likes_received',
+        scatter=False,
+        color='red',
+        line_kws={'linewidth': 2}
+    )
+    
+    plt.title(f'Likes Received vs App Usage Time (menit) - {gender}')
+    plt.xlabel('App Usage Time (menit)')
+    plt.ylabel('Likes Received')
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
