@@ -106,21 +106,22 @@ eda_clean_multi = eda_clean_multi.dropna(subset=['likes_received', 'app_usage_ti
 # Scatter plot per gender
 genders = eda_clean_multi['gender'].unique()
 
-for gender in genders:
+for gender in eda_clean_multi['gender'].unique():
     subset = eda_clean_multi[eda_clean_multi['gender'] == gender]
     
-    plt.figure(figsize=(6, 4))
-    sns.scatterplot(
+    plt.figure(figsize=(8, 6))
+    sns.kdeplot(
         data=subset,
         x='app_usage_time_min',
         y='likes_received',
-        color='skyblue',
-        alpha=0.5
+        fill=True,
+        cmap='Blues',
+        levels=30,  # semakin besar = semakin detail
+        thresh=0.05 # filter kepadatan sangat kecil
     )
-    plt.title(f'Likes Received vs App Usage Time (menit) - {gender}')
-    plt.xlabel('App Usage Time (menit)')
+    plt.xlabel('App Usage Time (minutes)')
     plt.ylabel('Likes Received')
-    plt.grid(True)
+    plt.title(f'Density Plot: {gender}')
     plt.tight_layout()
     plt.show()
 
