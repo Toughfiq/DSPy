@@ -44,3 +44,14 @@ def clean_gender (value):
         return 'Prefer Not to Say'
     else:
         return value.title()  # Kapitalisasi respon lain  
+# ========================================
+# Cleaning numeric
+# ========================================  
+def clean_numeric(df, column):
+    """
+    Membersihkan kolom numerik:
+    - Konversi ke numeric (float)
+    - Drop NaN hasil konversi
+    """
+    df[column] = pd.to_numeric(df[column], errors='coerce')
+    return df.dropna(subset=[column])
