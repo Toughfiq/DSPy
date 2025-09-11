@@ -36,3 +36,4 @@ def load_column(column_name, table='user_data'):
     except Exception as e:
         print(f"[LoadColumn Error] {e}")
         return pd.DataFrame()
+
