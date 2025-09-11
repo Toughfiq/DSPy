@@ -6,6 +6,7 @@ Project ini bertujuan melakukan **Exploratory Data Analysis (EDA)** terhadap dat
 Analisis mencakup statistik deskriptif, visualisasi distribusi likes, serta analisis multivariat
 
 <h1>**Struktur Folder Proyek**
+  
 Berikut adalah penjelasan mengenai struktur folder dan file utama dalam proyek ini:
 
 Data: Direktori ini berisi semua data yang digunakan dalam proyek, baik data mentah maupun data yang sudah dibersihkan dan siap untuk dianalisis.
