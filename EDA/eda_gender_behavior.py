@@ -39,11 +39,11 @@ def analyze_swipe_ratio(df):
     print("\n=== Hasil Uji ANOVA ===")
     print(f"F-statistic: {stat:.3f}")
     print(f"P-value    : {p:.5f}")
-    print("→ Terdapat perbedaan signifikan." if p < 0.05 else "→ Tidak terdapat perbedaan signifikan.")
+    print("→ Terdapat perbedaan signifikan." if p < 0.05 else "→ Tidak terdapat perbedaan signifikan,antar gender")
 
     # Visualisasi boxplot
     plt.figure(figsize=(8, 5))
-    sns.boxplot(data=df, x='gender', y='swipe_right_ratio', palette='Set2')
+    sns.boxplot(data=df, x='gender', y='swipe_right_ratio', hue='gender', palette='Set2', legend=False)
     plt.title('Distribusi Swipe Right Ratio Berdasarkan Gender')
     plt.xticks(rotation=15)
     plt.tight_layout()

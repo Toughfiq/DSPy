@@ -55,6 +55,7 @@ cross_tab = pd.crosstab(eda_corr_df['gender_group'], eda_corr_df['sexual_orienta
 # Visualisasi
 sns.heatmap(cross_tab, annot=True, fmt='d', cmap='BuPu')
 plt.title("Grouped Gender vs Sexual Orientation")
+plt.xticks(rotation=15)
 plt.show()
 
 # Chi-square test
