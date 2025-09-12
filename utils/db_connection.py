@@ -36,4 +36,15 @@ def load_column(column_name, table='user_data'):
     except Exception as e:
         print(f"[LoadColumn Error] {e}")
         return pd.DataFrame()
+def load_query(query):
+    try:
+        conn = get_connection()
+        df = pd.read_sql_query("SELECT * FROM user_data", conn)
+        return df
+    except mysql.connector.Error as err:
+        print(f"[RunQuery Error] {err}")
+        return pd.DataFrame()
+    finally:
+        if 'conn' in locals() and conn.is_connected():
+            conn.close()
 

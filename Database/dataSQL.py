@@ -29,7 +29,7 @@ try:
     " swipe_right_ratio, swipe_right_label, likes_received," \
     " mutual_matches, profile_pics_count, bio_length, " \
     "message_sent_count, emoji_usage_rate, last_active_hour," \
-    " swipe_time_of_day, match_outcome)" # Ganti dengan nama kolom aktual Anda
+    " swipe_time_of_day, match_outcome)"
     placeholders = "(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s)" # Sesuaikan jumlah %s dengan jumlah kolom
 
     insert_query = f"INSERT INTO {table_name} {columns} VALUES {placeholders}"
