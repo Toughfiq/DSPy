@@ -55,3 +55,22 @@ def clean_numeric(df, column):
     """
     df[column] = pd.to_numeric(df[column], errors='coerce')
     return df.dropna(subset=[column])
+# ========================================
+# Cleaning Income
+# ========================================  
+def clean_Income (value):
+    if pd.isna(value): #Fungsi pd.isna() mengecek satu nilai (value) apakah NaN atau tidak.
+        return 'Unknown'
+    value = str(value).strip()  # Mengganti spasi atau white space menjadi type string agar terbaca
+    if value.lower() == 'High':
+        return 'High'
+    elif value.lower() == 'Upper-Middle':
+        return 'Upper-Middle'
+    elif value.lower() == 'Low':
+        return 'Low'
+    elif value.lower() in ['Lower-Middle', 'Lower-middle']: #mencegah adanya kesalah menulis
+        return 'Lower-Middle'
+    elif value.lower() in ['Very High', 'Very-High']:
+        return 'Very High'
+    else:
+        return value.title()  # Kapitalisasi respon lain  

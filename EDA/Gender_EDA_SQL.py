@@ -92,3 +92,6 @@ plt.pie(group_counts,
 plt.title('Gender Group Distribution', fontsize=14)
 plt.axis('equal')  # memastikan lingkaran utuh
 plt.show()
+
+income_df = load_column('income_bracket')
+print("Unique values:", income_df['income_bracket'].unique())
