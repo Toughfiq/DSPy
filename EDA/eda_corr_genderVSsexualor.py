@@ -68,3 +68,22 @@ tidak terdapat hubungan statistik yang signifikan antara gender dan orientasi se
 dalam dataset ini.Hal ini juga dapat menunjukkan bahwa 
 orientasi seksual dalam data ini terdistribusi cukup merata lintas kelompok gender."
 '''
+# ==== Gender vs Income Bracket ====
+eda_income = load_columns(['gender', 'income_bracket']) #gunakan list untuk load beberapa collumns
+eda_income['gender'] = eda_income['gender'].apply(clean_gender)
+eda_income['income_bracket'] = eda_income['income_bracket'].apply(clean_Income)
+cross_tab = pd.crosstab(eda_income['gender'], eda_income['income_bracket'])
+print(cross_tab)
+plt.figure(figsize=(10, 6))
+sns.heatmap(cross_tab, annot=True, fmt='d', cmap='YlGnBu')
+plt.title("Gender vs Income Bracket")
+plt.xlabel("Income Bracket")
+plt.ylabel("Gender")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+# Lakukan uji chi-square
+chi2, p, dof, expected = chi2_contingency(cross_tab)
+
+print(f"Chi-square statistic: {chi2}")
+print(f"P-value: {p}")
