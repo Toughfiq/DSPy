@@ -32,7 +32,7 @@ def analyze_swipe_ratio(df):
     print("\n=== Rata-rata Swipe Right Ratio per Gender ===")
     mean_table = df.groupby('gender')['swipe_right_ratio'].mean().sort_values(ascending=False)
     print(mean_table)
-
+ 
     # Uji ANOVA
     groups = [group['swipe_right_ratio'] for _, group in df.groupby('gender')]
     stat, p = f_oneway(*groups)
